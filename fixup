@@ -6,5 +6,9 @@ fakeroot bash -c '
     mkdir tmp
     dpkg-deb -R $DEB tmp
     patchelf --replace-needed libmali.so.1 libgbm.so.1 tmp/usr/lib/chromium/chromium-bin
+    if ! grep "^Depends:" tmp/DEBIAN/control | grep "libc++1"
+    then
+        sed -Ei "s/^(Depends:)/\1 libc++1,/" tmp/DEBIAN/control
+    fi
     dpkg-deb -b tmp ${DEB/.deb}-fixed.deb
 '
