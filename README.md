@@ -1,3 +1,3 @@
 # chromium-x11
 
-Rockchip prebuilt Chromium.
+The chromium packages are fetched from https://github.com/radxa-pkg/rockchip-prebuilt/.
